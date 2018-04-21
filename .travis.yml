@@ -4,4 +4,4 @@ scala:
   - 2.12.5
 
 jdk:
-  - oraclejdk10
+  - oraclejdk9

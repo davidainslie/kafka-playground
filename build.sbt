@@ -60,8 +60,6 @@ dockerfile in docker := {
     from("hseeberger/scala-sbt")
     env("SCALA_VERSION", "2.12.5")
     env("SBT_VERSION", "1.1.4")
-    expose(8082)
-    expose(9092)
     add(artifact, artifactTargetPath)
     entryPoint("java", "-Xms1024m", "-Xmx2048m", "-jar", artifactTargetPath)
   }

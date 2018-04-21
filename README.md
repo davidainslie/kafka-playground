@@ -1,6 +1,4 @@
-# kafka-playground #
-
-Welcome to kafka-playground!
+# Kafka Playground in Scala #
 
 ## Contribution policy ##
 
@@ -15,3 +13,63 @@ legal authority to do so.
 
 This code is open source software licensed under the
 [MIT](https://opensource.org/licenses/MIT) license.
+
+## Installation requirements ##
+On Mac:
+```
+$ brew update && brew install scala && brew install sbt && brew install kubernetes-cli && brew install kubectl && brew cask install virtualbox docker minikube
+```
+
+## Unit Testing ##
+```
+$ sbt test
+```
+
+## Integration Testing ##
+```
+$ sbt it:test
+```
+
+## Gatling ##
+Gatling tests can act as performance tests and acceptance tests (thus providing regression tests).
+```
+$ sbt gatling-it:test
+```
+
+## Docker Compose ##
+Using "sbt docker compose" plugin.
+
+To use locally built images for all services defined in the Docker Compose file instead of pulling from the Docker Registry use the following command:
+
+```
+$ sbt dockerComposeUp
+```
+
+To shutdown all instances started from the current project with the Plugin enabled run:
+
+```
+$  sbt dockerComposeStop
+```
+
+Docker Compose is configured to start Zookeeper, Kafka and this application/service.
+
+And easy way to test/check is to create a test publisher and consumer using **kafkacat** - for a Mac install by:
+```
+$ brew install kafkacat
+```
+
+Then start a test publisher and publish events to kafka by:
+```
+$ kafkacat -P -b localhost:9092 -t test
+scooby
+doo
+
+```
+
+Which can be consumed by:
+```
+$ kafkacat -C -b localhost:9092 -t test
+scooby
+doo
+
+```

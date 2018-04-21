@@ -1,0 +1,12 @@
+version: "3.3"
+
+services:
+  kafka:
+    image: wurstmeister/kafka
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: docker.for.mac.localhost on macOS
+      LOG4J_LOGGER_KAFKA_AUTHORIZER_LOGGER: DEBUG
+    ports:
+      - "9092:9092"
+
+  # kafka-playground:
